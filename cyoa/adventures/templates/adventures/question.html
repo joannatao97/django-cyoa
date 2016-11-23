@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ question.title }}</h1>
+<div>{{ question_text | linebreaks}}</div>
+
+{% if question.input_field %}
+<input class="form-control" id="input_field" type="text">
+{% endif %}
+
+{% for choice in question.choices.all %}
+<a onclick='addinputfield(this)' href="{% url 'adventures:question' choice.to_question.id %}">{{ choice.choice_text }}</a>
+{% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+{% if question.input_field %}
+function addinputfield(dom){
+    dom.href = dom.href + '?input_field_name={{ question.input_field }}&input_field_content=' + document.getElementById('input_field').value;
+}
+{% else %}
+function addinputfield(){}
+{% endif %}
+</script>
+{% endblock %}

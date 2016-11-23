@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ adventure.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ adventure.title }}</h1>
+<p>{{ adventure.description }}</p>
+<a class="btn btn-success" href="{% url 'adventures:question' adventure.first_question.id %}">Proceed</a>
+
+{% endblock %}

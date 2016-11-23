@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Choose-Your-Own-Adventure{% endblock %}
+
+{% block content %}
+
+<h1>Choose-Your-Own-Adventure</h1>
+{% for adventure in adventures %}
+<h2><a href="{% url 'adventures:adventure' adventure.id %}">{{ adventure.title }}</a></h2>
+<p>{{ adventure.description }}</p>
+{% endfor %}
+
+{% endblock %}
