@@ -1,0 +1,62 @@
+DJANGO:
+The Django framework was suggested to me by a friend. With just a cursory glance
+at the website, I found that it was easy to navigate and easy to find things on,
+and even included a tutorial that showed you how to create a website step-by-step.
+Since it seemed to be easy to use, even for beginners, I decided to use it for my
+project. I followed the tutorial, making modifications along the way, for much of
+my project -- it just seemed easier to have everything I needed to do in one place.
+I've tried to mark the places where I've added code snippets straight from django,
+but there may have been a couple places where I missed something.
+
+Thus, I used urls.py, views.py, apps.py and models.py mostly according to django.
+Since I didn't want my site to break if the user tried to navigate to a non-existent
+page, I added the 404 exception. I made one view each for the classes that had
+significant amounts of text, and of course, the index page. I also made the urls,
+pretty simply, "/adventure/[adventure_id]" or "/question/[question_id].
+
+DATABASE:
+While making the database, I thought about how a choose-your-own adventure works.
+Each question has choices, which lead to other questions. Thus, I created those
+two classes in models.py, as well as adventures.py, in the case that I wanted to
+add more adventures, one of my higher goals.
+
+Each question could have a long question_text, but a shorter title. Each question
+would also have choices, and some needed input fields, in case I wanted stories to
+interact with each other, and so I could get a name to insert into the text if
+needed. Thus, questions also had short input fields. Input field and choices are set
+to blank=true, in case a question doesn't have a next choice, or if nothing is put
+into the field. I didn't need choices to be set to blank=true in the end, but it
+probably helped while inputting all the questions and choices.
+
+Each adventure also had a title, but also a first question, and a short description,
+although it doesn't necessarily need a description. I also set it up such that if I
+wanted to delete the first question, I'd also delete the adventure along with it.
+After all, if I don't need the first question, then I probably also don't need the
+adventure itself.
+
+Finally, each choice would have a question it leads to, and a choice text to display.
+If the question it leads to is deleted, the choice is also deleted -- again, because
+if I don't need the question altogether, I don't need the choice either.
+
+WEBSITE DESIGN:
+Then, each url needed a template. For questions and adventures, I created an html template,
+since it would be best to display a template for each question and adventure, since each one
+should be similar in format to others in the class. From there, decisions were largely based
+on aesthetics and functionality: The home page should link to all adventures, and each adventure
+should link to the first question of the adventure. Each question of the adventure should
+display its choices, and each choice links to the next question. In the case of an input field,
+the views.py page would store the input as name, which would then be replaced if {name} showed
+up in the question text.
+
+I also decided to add a choice the end of each question/choice chain that links back to the
+first question, allowing a user to restart easily. I also added a link at the top of each page
+that links back to the home page.
+
+I moved all the css to the stylesheets, as well, since I thought that would lead to a cleaner
+design. I also used bootstrap, which made working with buttons easier. Having each template
+inherit from the base template also helped make the design cleaner.
+
+In the end, I didn't have the time to write a second story, which means that I couldn't
+have two stories interact with each other. However, this would probably have been done through
+the name input field, or I would modify one of the questions in each adventure to take an input,
+which could be found in a different adventure.
