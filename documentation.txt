@@ -1,13 +1,13 @@
 INTRODUCTION:
 The project is a choose-your-own-adventure webapp, requiring the libraries specified
-in requirements.txt. To download these, use pip install -r requirements.txt. Of course,
-since Django is python based, python will also be required. Information regarding this
+in requirements.txt. To download these, use `pip3 install -r requirements.txt`. Of course,
+since Django is python based, python (3) will also be required. Information regarding this
 can be found at
 https://docs.djangoproject.com/en/1.10/topics/install/#installing-official-release
 
-To run the project, navigate to the cyoa folder found in django-cyoa. The server may
-then be run with the command python3 manage.py runserver. The terminal will then show
-the location of the development server. The app is then found at that location.
+To run the project, navigate to the cyoa folder found in root directory of the project.
+The server may then be run with the command `./manage.py runserver`. The terminal will
+then show the location of the development server. The app is then found at that location.
 
 FILES:
 /adventures/models.py shows the classes of objects stored in the database
