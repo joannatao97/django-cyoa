@@ -1,4 +1,7 @@
 /* centers button back home */
+/* had some difficulties with this: used
+https://teamtreehouse.com/community/why-do-you-not-just-use-textalign-center-in-title-instead-of-mainheader
+and http://www.w3schools.com/ for reference, eventually asked a friend */
 .header-div {
         width: 100%;
         text-align: right;
