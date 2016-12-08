@@ -1,0 +1,51 @@
+INTRODUCTION:
+The project is a choose-your-own-adventure webapp, requiring the libraries specified
+in requirements.txt. To download these, use pip install -r requirements.txt. Of course,
+since Django is python based, python will also be required. Information regarding this
+can be found at
+https://docs.djangoproject.com/en/1.10/topics/install/#installing-official-release
+
+To run the project, navigate to the cyoa folder found in django-cyoa. The server may
+then be run with the command python3 manage.py runserver. The terminal will then show
+the location of the development server. The app is then found at that location.
+
+FILES:
+/adventures/models.py shows the classes of objects stored in the database
+/adventures/urls.py creates the urls for each class
+/adventures/views.py allows the server to request and get information across pages
+
+DATABASE:
+As listed in models.py, the database has three classes: Adventure, Choice, and Question.
+Each Question displays (a) choice(s) that link to other questions, while the Adventure
+links to the first Question in the Adventure's question chain. Each Adventure also has a
+title and description, each Question has a title, text, and some have an input field, and
+each Choice has text as well as a question it leads to.
+
+
+APP NAVIGATION:
+At the top right of each page of the app, there is a red rectangle that says "Adventure 
+Stories!". This links back to the home page, ie, the starting page that is headed by a
+centered "Welcome".
+
+On this home page, there is a button for the title of each available story, with a description
+underneath it. If the title of a story is clicked, the app brings you to the page for that
+adventure. Each adventure is stored in the database, so the url can be formed with urls.py.
+The url for an adventure is /adventure/[adventure_id], where [adventure_id] is the id of the
+relevant adventure as stored in the database. On each adventure page, as defined in the html
+templates and stylesheets, there is a button that says proceed, leading to the first question
+in the adventure's question chain. 
+
+On each question page, the title of the question is displayed, then the text. If there is an
+input field available, it is shown below the text. Finally, the choices are listed as buttons
+underneath that. Each choice will lead to the page of the question that the choice is associated
+with, as input in the database. This continues until the ending is reached, at which point the
+final choice leads back to the beginning (first question) of the adventure.
+
+Questions with an input field are meant to store a name. Thus, the value submitted through the
+field is stored to the session by views.py as name. It can then be accessed through all adventures.
+
+ADDING ADVENTURES
+If other adventures were added, they and their questions and choices should be input into the database
+through the admin page (/admin). If this was done properly, then the adventure would show up on 
+the home page, and would also have a page including a button to proceed to the new adventure's
+first question. It should then be as playable as the first adventure.
