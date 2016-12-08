@@ -1,18 +1,36 @@
+<!--Allow stylesheets to be used-->
 {% load staticfiles %}
 <html>
     <head>
+        <!--Insert title on each page-->
         <title>{% block title %}{% endblock %}</title>
+
+        <!--Add resources & styles-->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+
+        <!--Allows for each page's styles-->
         {% block styles %}{% endblock %}
     </head>
+
     <body>
+
+        <!--Button linking back home-->
+        <div class="header-div">
+            <a class='h-text' href="/">Adventure Stories!</a>
+        </div>
+
+        <!--Allows for each page's content-->
         <div class='content-div'>
             {% block content %}
             {% endblock %}
         </div>
+
+        <!--Useful resources for scripts-->
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!--Allows for each page to have its own scripts-->
         {% block scripts %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,25 @@
+/* consistent margins -- not to header button */
+h1, .text, .form-control, .btn-group-vertical{
+    margin: 10px;
+}
+
+/* choice button aesthetics */
+.q-btn{
+    background-color: #f44336;
+    border: #f44336;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* choice link aesthetics */
+.q-btn:link, .q-btn:visited{
+    color: white;
+}
+.q-btn:hover{
+    color: black;
+    background-color: white;
+    border: 2px solid #f44336
+}

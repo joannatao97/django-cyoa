@@ -1,23 +1,39 @@
+<!-- All pages build off of base.html & use static files-->
 {% extends "base.html" %}
+{% load staticfiles %}
 
+<!--Add title to each page-->
 {% block title %}{{ question.title }}{% endblock %}
 
+<!--Style elements of page-->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/question.css' %}">
+{% endblock %}
+
+
+<!--Add content: title, text-->
 {% block content %}
 
 <h1>{{ question.title }}</h1>
-<div>{{ question_text | linebreaks}}</div>
+<div class='text'>{{ question_text | linebreaks}}</div>
 
+<!--Add input field if necessary-->
 {% if question.input_field %}
-<input class="form-control" id="input_field" type="text">
+<input class="form-control" id="input_field" type="text"><br>
 {% endif %}
 
+<!--Show choices as a vertical button group-->
+<div class='btn-group-vertical'>
 {% for choice in question.choices.all %}
-<a onclick='addinputfield(this)' href="{% url 'adventures:question' choice.to_question.id %}">{{ choice.choice_text }}</a>
+<a class='btn btn-primary q-btn' onclick='addinputfield(this)' href="{% url 'adventures:question' choice.to_question.id %}">{{ choice.choice_text }}</a>
 {% endfor %}
+</div>
 
 {% endblock %}
 
+<!--Question class specific scripts-->
 {% block scripts %}
+<!-- if there's an input field, get input-->
 <script>
 {% if question.input_field %}
 function addinputfield(dom){
@@ -26,5 +42,6 @@ function addinputfield(dom){
 {% else %}
 function addinputfield(){}
 {% endif %}
+
 </script>
 {% endblock %}

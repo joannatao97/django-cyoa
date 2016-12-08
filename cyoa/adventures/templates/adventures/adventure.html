@@ -1,11 +1,20 @@
+<!-- All pages build off of base.html & use static files-->
 {% extends "base.html" %}
+{% load staticfiles %}
 
+<!--Add title to each page-->
 {% block title %}{{ adventure.title }}{% endblock %}
 
+<!--Style elements of page-->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/adventure.css' %}">
+{% endblock %}
+
+<!--Add content: title, description, proceed button-->
 {% block content %}
 
 <h1>{{ adventure.title }}</h1>
 <p>{{ adventure.description }}</p>
-<a class="btn btn-success" href="{% url 'adventures:question' adventure.first_question.id %}">Proceed</a>
+<a class="btn btn-primary adventure-btn" href="{% url 'adventures:question' adventure.first_question.id %}">Proceed</a>
 
 {% endblock %}

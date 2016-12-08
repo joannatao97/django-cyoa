@@ -1,12 +1,21 @@
+<!-- All pages build off of base.html & use static files-->
 {% extends "base.html" %}
+{% load staticfiles %}
 
+<!--Add title to page-->
 {% block title %}Choose-Your-Own-Adventure{% endblock %}
+
+<!--Style elements of page-->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h1>Choose-Your-Own-Adventure</h1>
+<!--Content: Welcome, each adventure's title & description-->
+<h1>Welcome</h1>
 {% for adventure in adventures %}
-<h2><a href="{% url 'adventures:adventure' adventure.id %}">{{ adventure.title }}</a></h2>
+<a class='btn btn-primary adventure-title' href="{% url 'adventures:adventure' adventure.id %}">{{ adventure.title }}</a>
 <p>{{ adventure.description }}</p>
 {% endfor %}
 
